@@ -1,5 +1,5 @@
 import datetime
-from db_utils import Tarea2DB
+from utils.db_utils import Tarea2DB
 from enum import Enum
 import logging
 import re

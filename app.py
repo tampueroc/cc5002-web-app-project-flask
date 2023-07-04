@@ -5,9 +5,9 @@ import os
 from flask import Flask, Response, render_template, request
 from flask_cors import CORS, cross_origin
 import filetype
-from db_utils import Tarea2DB
+from utils.db_utils import Tarea2DB
 from models import Donacion, Pedido
-from utils import get_map_data, validate_conf_img
+from utils.utils import get_map_data, validate_conf_img
 from werkzeug.utils import secure_filename
 
 logging.getLogger().setLevel(logging.INFO)
