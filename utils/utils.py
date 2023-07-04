@@ -2,7 +2,7 @@ import json
 import filetype
 import requests
 
-from db_utils import Tarea2DB
+from utils.db_utils import Tarea2DB
 
 def validate_conf_img(conf_img):
     ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
