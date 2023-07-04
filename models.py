@@ -25,7 +25,7 @@ class Donacion(BaseModel):
     fecha_disponibilidad: str
     nombre: str
     email: str
-    celular: str
+    celular: Optional[str]
 
     @validator('region_id')
     def validate_region_id(cls, v):
@@ -87,7 +87,7 @@ class Pedido(BaseModel):
     cantidad: int
     nombre_solicitante: str
     email_solicitante: str
-    celular_solicitante: str
+    celular_solicitante: Optional[str]
 
     @validator('region_id')
     def validate_region_id(cls, v):
