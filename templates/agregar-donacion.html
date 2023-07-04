@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Agregar donacion</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <script  src="{{ url_for('static', filename='js/get_regiones.js') }}"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Agregar donacion</h2>
+        <form name="myform" action="agregar-donacion" method="post">
+            <div class="form-group">
+                <label for="region">Región:</label>
+                <select class="form-control" id="region" name="region">
+                    <option value="0">Seleccione una región</option>
+                </select>
+            </div>
+            <fieldset id="disable-comuna" disabled>
+                <div class="form-group">
+                    <label for="comuna">comuna</label>
+                    <select class="form-control" id="comuna" name="comuna">
+                        <option value="0">Seleccione una comuna</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <div class="form-group">
+                <label for="calle-numero">calle y número:</label>
+                <input type="text" id="calle-numero" name="calle-numero" size="80">
+            </div>
+
+            <div class="form-group">
+                <label for="tipo">tipo donación:</label>
+                <select class="form-control" id="tipo" name="tipo">
+                    <option value="">Selecciona un tipo de donacion</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="cantidad">cantidad</label>
+                <input type="text" id="cantidad" name="cantidad" size="10">
+            </div>
+
+            <div class="form-group">
+                <label for="fecha-disponibilidad">fecha disponibilidad:</label>
+                <input type="text" id="fecha-disponibilidad" name="fecha-disponibilidad" size="10">
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">descripción:</label>
+                <input type="text" id="descripcion" name="descripcion" size="80">
+            </div>
+
+            <div class="form-group">
+                <label for="condiciones">condiciones para retirar:</label>
+                <input type="text" id="condiciones" name="condiciones" size="80">
+            </div>
+            <div class="form-group">
+                <label>foto donación:</label>
+                <br>
+                <label for="fotos">Selecciona un maximo de tres fotos:</label>
+                <input type="file" name="fotos" id="fotos" multiple>
+                <br>
+            </div>
+            <div class="form-group">
+                <label for="nombre">nombre donante:</label>
+                <input type="text" id="nombre" name="nombre" size="80">
+            </div>
+
+            <div class="form-group">
+                <label for="email">email contacto:</label>
+                <input type="text" id="email" name="email" size="30">
+            </div>
+            <div class="form-group">
+                <label for="telefono">telefono contacto:</label>
+                <input type="text" id="telefono" name="telefono" size="15">
+            </div>
+            <div class="form-row mt-3">
+                <button id="submit-btn" type="button" class="btn btn-primary mx-auto" data-toggle="modal"
+                    data-target="#validation-box" onclick="validateFormDonacion()">
+                    Agregar donación
+                </button>
+            </div>
+        </form>
+
+        <!-- Modal -->
+        <div class="modal" id="validation-box" tabindex="-1" role="dialog" aria-labelledby="validation-label"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="validation-label">Agregar Donación</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="validation-text"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script  src="{{ url_for('static', filename='js/validation_donacion.js') }}"></script>
+
+</body>

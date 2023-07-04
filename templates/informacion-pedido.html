@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Informacion pedido</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            /*  width: 80%; */
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container mt-4">
+        <div class="card p-3">
+            <h1 class="text-center mb-4">Información pedido</h1>
+            <table class="table table-striped table-hover">
+                <tr>
+                    <td><strong>Región:</strong></td>
+                    <td><span id="region"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Comuna:</strong></td>
+                    <td><span id="comuna"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Tipo de Pedido:</strong></td>
+                    <td><span id="tipo"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Descripción del Pedido:</strong></td>
+                    <td><span id="descripcion"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Cantidad:</strong></td>
+                    <td><span id="cantidad"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Nombre del Solicitante:</strong></td>
+                    <td><span id="nombre"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Email del Solicitante:</strong></td>
+                    <td><span id="email"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Número de Celular del Solicitante:</strong></td>
+                    <td><span id="celular"></span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="container mt-3">
+        <button id="incio-btn" type="button" class="btn btn-primary mx-auto"
+                onclick="window.location.href='../'">
+                Inicio
+            </button>
+        <button id="ver-pedidos-btn" type="button" class="btn btn-primary mx-auto"
+            onclick="window.location.href='../ver-pedidos'">
+            Ver pedidos
+        </button>
+    </div>
+    <script>
+        function getData() {
+            pedido = JSON.parse('{{pedido |tojson }}');
+    
+            document.getElementById("region").innerHTML = pedido.region_nombre;
+            document.getElementById("comuna").innerHTML = pedido.comuna_nombre;
+            document.getElementById("tipo").innerHTML = pedido.tipo;
+            document.getElementById("cantidad").innerHTML = pedido.cantidad;
+            document.getElementById("descripcion").innerHTML = pedido.descripcion;
+            document.getElementById("nombre").innerHTML = pedido.nombre_solicitante;
+            document.getElementById("email").innerHTML = pedido.email_solicitante;
+            document.getElementById("celular").innerHTML = pedido.celular_solicitante;
+        }
+        getData();
+    </script>
+</body>
+
+
+</html>
